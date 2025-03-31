@@ -1,0 +1,61 @@
+{% css %}
+.header {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.header-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header-link {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.header-link:hover {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .header-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+{% endcss %}
+
+<header class="header">
+  <nav class="header-nav">
+    <a href="/" class="header-title">Your Name</a>
+    <div class="header-links">
+      <a href="/about" class="header-link">About</a>
+      <a href="/experience" class="header-link">Experience</a>
+      <a href="/articles" class="header-link">Articles</a>
+      <a href="/projects" class="header-link">Projects</a>
+      <a href="/contact" class="header-link">Contact</a>
+    </div>
+  </nav>
+</header> 

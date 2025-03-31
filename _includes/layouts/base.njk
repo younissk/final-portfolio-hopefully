@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+
+		{#- Uncomment this if you'd like folks to know that you used Eleventy to build your site!  #}
+		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
+
+		{#-
+		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
+		1. CSS:
+			* Add to a per-page bundle using `{% css %}{% endcss %}`
+			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+		2. Or for JavaScript:
+			* Add to a per-page bundle using `{% js %}{% endjs %}`
+			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
+		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+		#}
+
+		{%- css %}
+		/* Base styles */
+		:root {
+			--color-bg: #ffffff;
+			--color-text: #1a1a1a;
+			--color-primary: #34d399;
+			--color-secondary: #4b5563;
+			--font-sans: system-ui, -apple-system, sans-serif;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: var(--font-sans);
+			color: var(--color-text);
+			background-color: var(--color-bg);
+			line-height: 1.6;
+		}
+
+		.visually-hidden {
+			clip: rect(0 0 0 0);
+			clip-path: inset(50%);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+		}
+
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 2rem 1rem;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem;
+			color: var(--color-secondary);
+			border-top: 1px solid #eee;
+		}
+
+		footer a {
+			color: var(--color-primary);
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+		{% endcss %}
+
+		{#- Add an arbitrary string to the bundle #}
+		{%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
+		{#- Add the contents of a file to the bundle #}
+		{%- css %}{% include "public/css/index.css" %}{% endcss %}
+		{#- Or you can add from node_modules #}
+		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+
+		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
+		<style>{% getBundle "css" %}</style>
+		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+
+		{#- Add the heading-anchors web component to the JavaScript bundle #}
+		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		{% include "components/header.njk" %}
+
+		<main id="skip">
+			<heading-anchors>
+				{{ content | safe }}
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p>Built with <a href="https://www.11ty.dev/">Eleventy</a> • <a href="https://github.com/youniss">GitHub</a></p>
+		</footer>
+
+		<!-- This page `

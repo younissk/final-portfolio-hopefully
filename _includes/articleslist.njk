@@ -1,0 +1,9 @@
+{%- css %}.articlelist { counter-reset: start-from {{ (articleslistCounter or articleslist.length) + 1 }} }{% endcss %}
+<ol reversed class="articlelist">
+{%- for article in articleslist | reverse %}
+	<li class="articlelist-item{% if article.url == url %} articlelist-item-active{% endif %}">
+		<a href="{{ article.url }}" class="articlelist-link">{% if article.data.title %}{{ article.data.title }}{% else %}<code>{{ article.url }}</code>{% endif %}</a>
+		<time class="articlelist-date" datetime="{{ article.date | htmlDateString }}">{{ article.date | readableDate("LLLL yyyy") }}</time>
+	</li>
+{%- endfor %}
+</ol> 

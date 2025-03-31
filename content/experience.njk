@@ -1,0 +1,153 @@
+---
+layout: layouts/base.njk
+title: Experience
+---
+
+<h1>Experience</h1>
+
+<div class="experience-section">
+  <div class="experience-item">
+    <h2 class="experience-title">Web developer</h2>
+    <div class="experience-company">ib-Data</div>
+    <div class="experience-date">November 2022 – Present</div>
+    <div class="experience-responsibilities">
+      <div class="experience-responsibilities-title">Responsibilities include:</div>
+      <ul class="experience-list">
+        <li>Led the migration of legacy systems to a modern cloud infrastructure, resulting in 40% cost reduction</li>
+        <li>Implemented automated CI/CD pipelines reducing deployment time by 60%</li>
+        <li>Managed a team of 12 engineers across cloud operations and site reliability</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="experience-item">
+    <h2 class="experience-title">Paramedic (Civil Service)</h2>
+    <div class="experience-company">Samariterbund Burgenland</div>
+    <div class="experience-date">January 2016 – December 2020</div>
+    <div class="experience-responsibilities">
+      <div class="experience-responsibilities-title">Responsibilities include:</div>
+      <ul class="experience-list">
+        <li>Migrated infrastructure to a new data center</li>
+        <li>Developed and maintained high-performance microservices handling millions of requests daily</li>
+        <li>Implemented real-time data processing pipelines using Apache Kafka</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h1>Education</h1>
+
+<div class="experience-section">
+  <div class="experience-item">
+    <h2 class="experience-title">Bachelor of Science in Artificial Intelligence</h2>
+    <div class="experience-company">Johannes Kepler University Linz</div>
+    <div class="experience-date">2022 – Present</div>
+    <div class="experience-responsibilities">
+      <div class="experience-responsibilities-title">Responsibilities include:</div>
+      <ul class="experience-list">
+        <li>Led the migration of legacy systems to a modern cloud infrastructure, resulting in 40% cost reduction</li>
+        <li>Implemented automated CI/CD pipelines reducing deployment time by 60%</li>
+        <li>Managed a team of 12 engineers across cloud operations and site reliability</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="experience-item">
+    <h2 class="experience-title">Construction Engineering</h2>
+    <div class="experience-company">HTL Mödling (Hochbau)</div>
+    <div class="experience-date">2016 – 2020</div>
+    <div class="experience-responsibilities">
+      <div class="experience-responsibilities-title">Responsibilities include:</div>
+      <ul class="experience-list">
+        <li>Migrated infrastructure to a new data center</li>
+        <li>Developed and maintained high-performance microservices handling millions of requests daily</li>
+        <li>Implemented real-time data processing pipelines using Apache Kafka</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% css %}
+.experience-section {
+  margin-top: 2rem;
+}
+
+.experience-item {
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #34d399;
+  border-radius: 4px;
+}
+
+.experience-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.experience-company {
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.experience-date {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.experience-responsibilities {
+  margin-top: 1rem;
+}
+
+.experience-responsibilities-title {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.experience-list {
+  list-style: none;
+  padding: 0;
+}
+
+.experience-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-secondary);
+}
+
+.experience-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .experience-item {
+    padding-left: 1.5rem;
+  }
+
+  .experience-title {
+    font-size: 1.5rem;
+  }
+
+  .experience-company {
+    font-size: 1.1rem;
+  }
+}
+{% endcss %} 
