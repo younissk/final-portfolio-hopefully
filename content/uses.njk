@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+title: Uses
+---
+
+<div class="container">
+  <h1>What I Use</h1>
+  
+  <section class="uses-section">
+    <h2>Development Tools</h2>
+    <ul>
+      <li><strong>Editor:</strong> Visual Studio Code</li>
+      <li><strong>Terminal:</strong> iTerm2 with Oh My Zsh</li>
+      <li><strong>Browser:</strong> Google Chrome</li>
+      <li><strong>Version Control:</strong> Git</li>
+    </ul>
+  </section>
+
+  <section class="uses-section">
+    <h2>Hardware</h2>
+    <ul>
+      <li><strong>Computer:</strong> MacBook Pro</li>
+      <li><strong>Keyboard:</strong> Apple Magic Keyboard</li>
+      <li><strong>Mouse:</strong> Apple Magic Mouse</li>
+      <li><strong>Monitor:</strong> Dell UltraSharp 27"</li>
+    </ul>
+  </section>
+
+  <section class="uses-section">
+    <h2>Software</h2>
+    <ul>
+      <li><strong>Operating System:</strong> macOS</li>
+      <li><strong>Password Manager:</strong> 1Password</li>
+      <li><strong>Note Taking:</strong> Notion</li>
+      <li><strong>Communication:</strong> Slack, Discord</li>
+    </ul>
+  </section>
+</div>
+
+{% set css %}
+.uses-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.uses-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.uses-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.uses-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.uses-section strong {
+  color: var(--text-color);
+  margin-right: 0.5rem;
+}
+{% endset %}
+
+<style>
+  {{css | safe}}
+</style> 

@@ -6,37 +6,33 @@
   {{css | safe}}
 </style>
 
-<header class="site-header">
-  <div class="header-container">
-    <div class="logo-container">
-      <a href="{{ '/' | url }}" class="site-logo">
-        {{ metadata.title }}
-      </a>
-    </div>
-
-    <button class="mobile-menu-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="main-nav">
-      <ul class="nav-list">
-        {%- for nav in collections.nav | sort(attribute="date") -%}
-          <li class="nav-item">
-            <a href="{{ nav.url | url }}" 
-             class="nav-link {% if nav.url == page.url %}active{% endif %}">
-              {{ nav.data.navtitle }}
-            </a>
-          </li>
-        {%- endfor -%}
-      </ul>
-    </nav>
+<div class="header">
+  <a href="{{ '/' | url }}" class="logo">{{ metadata.title }}</a>
+  <button class="mobile-menu-btn" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="header-right">
+    <a href="/" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+    <a href="/about/" class="{% if page.url == '/about/' %}active{% endif %}">About</a>
+    <a href="/experience/" class="{% if page.url == '/experience/' %}active{% endif %}">Experience</a>
+    <a href="/articles/" class="{% if page.url == '/articles/' %}active{% endif %}">Articles</a>
+    <a href="/uses/" class="{% if page.url == '/uses/' %}active{% endif %}">Uses</a>
   </div>
-</header>
+</div>
 
 {% set js %}
-{% include "js/header.js" %}
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.querySelector('.header-right');
+  
+  menuBtn.addEventListener('click', function() {
+    menuBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+});
 {% endset %}
 
 <script>

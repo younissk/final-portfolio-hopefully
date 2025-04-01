@@ -59,14 +59,14 @@ navtitle: Home
 	font-size: 2rem;
 	margin-top: 2.5rem;
 	margin-bottom: 1rem;
-	color: var(--color-text);
+	color: var(--heading-color);
 }
 
 .subsection-heading {
 	font-size: 1.5rem;
 	margin-top: 1.5rem;
 	margin-bottom: 0.75rem;
-	color: var(--color-text);
+	color: var(--heading-color);
 }
 
 .header-anchor {
@@ -77,8 +77,10 @@ navtitle: Home
 	font-weight: normal;
 }
 
-.header-anchor:hover {
-	opacity: 1;
+@media (prefers-color-scheme: dark) {
+	.header-anchor {
+		color: #666;
+	}
 }
 
 ul {

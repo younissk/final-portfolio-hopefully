@@ -16,6 +16,7 @@
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
+	--heading-color: var(--color-gray-90);
 
 	--syntax-tab-size: 2;
 }
@@ -30,6 +31,7 @@
 		--text-color-link: #1493fb;
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: #a6a6f8;
+		--heading-color: #ffffff;
 
 		--background-color: #15202b;
 	}
@@ -122,9 +124,6 @@ main :first-child {
 	margin-top: 0;
 }
 
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
-}
 
 .links-nextprev {
 	display: flex;
@@ -173,15 +172,6 @@ code {
 	word-break: break-all;
 }
 
-/* Header */
-header {
-	display: flex;
-	gap: 1em;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	padding: 1em;
-}
 .home-link {
 	flex-grow: 1;
 	font-size: 1em; /* 16px /16 */
@@ -189,24 +179,6 @@ header {
 }
 .home-link:link:not(:hover) {
 	text-decoration: none;
-}
-
-/* Nav */
-.nav {
-	display: flex;
-	gap: .5em 1em;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-.nav-item {
-	display: inline-block;
-}
-.nav-item a[href]:not(:hover) {
-	text-decoration: none;
-}
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
 }
 
 /* Posts list */
@@ -275,5 +247,12 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
+}
+
+/* Add heading styles */
+h1, h2, h3, h4, h5, h6 {
+	color: var(--heading-color);
+	margin-top: 2rem;
+	margin-bottom: 1rem;
 }
 

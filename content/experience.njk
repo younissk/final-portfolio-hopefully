@@ -89,14 +89,14 @@ navtitle: Experience
   top: 0.5rem;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #34d399;
+  background-color: var(--color-primary);
   border-radius: 4px;
 }
 
 .experience-title {
   font-size: 1.75rem;
   font-weight: bold;
-  color: var(--color-text);
+  color: var(--heading-color);
   margin-bottom: 0.5rem;
 }
 
@@ -118,7 +118,8 @@ navtitle: Experience
 
 .experience-responsibilities-title {
   font-size: 1.1rem;
-  color: var(--color-secondary);
+  font-weight: 600;
+  color: var(--heading-color);
   margin-bottom: 0.5rem;
 }
 
@@ -131,7 +132,7 @@ navtitle: Experience
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.75rem;
-  color: var(--color-secondary);
+  color: var(--text-color);
 }
 
 .experience-list li::before {
@@ -139,6 +140,20 @@ navtitle: Experience
   position: absolute;
   left: 0;
   color: var(--color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .experience-company {
+    color: #9ca3af;  /* A lighter gray for better readability */
+  }
+
+  .experience-date {
+    color: #9ca3af;  /* Same lighter gray */
+  }
+
+  .experience-list li {
+    color: #e5e7eb;  /* Very light gray for better readability */
+  }
 }
 
 @media (max-width: 768px) {
@@ -154,4 +169,4 @@ navtitle: Experience
     font-size: 1.1rem;
   }
 }
-{% endcss %} 
+{% endcss %}
