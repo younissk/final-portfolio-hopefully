@@ -1,6 +1,10 @@
 ---
 layout: layouts/base.njk
 title: About Me
+eleventyNavigation:
+  key: About
+  order: 2
+navtitle: About
 ---
 
 # About Me
