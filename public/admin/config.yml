@@ -5,6 +5,10 @@ backend:
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+# Enable LaTeX preview in the markdown editor
+preview_styles:
+  - "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+
 collections:
   - name: "blog"
     label: "Blog"
@@ -16,7 +20,7 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", editor_components: ["latex"] }
       - label: "Tags"
         name: "tags"
         widget: "list"
