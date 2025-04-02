@@ -304,7 +304,7 @@ def process_images(content, source_file_path, target_dir, vault_path, additional
     # Function to process each image reference
     def process_image_link(alt_text, image_path):
         if not image_path:
-            return f"![{alt_text}](image-not-found)"
+            return f'<img src="image-not-found" alt="image not found">'
             
         full_image_path = None
         
@@ -332,14 +332,14 @@ def process_images(content, source_file_path, target_dir, vault_path, additional
             print(f"Copying image: {full_image_path} -> {target_image_path}")
             shutil.copy2(full_image_path, target_image_path)
             
-            # Update the reference to point to the new location
-            return f"![{alt_text}](/articles/{os.path.basename(target_dir)}/images/{image_filename})"
+            # Update the reference to point to the new location using HTML img tag
+            return f'<img src="./images/{image_filename}" alt="{alt_text or "image"}">'
         else:
             print(f"Warning: Image not found: {image_path}")
             print(f"  - Searched in image map with {len(image_map)} entries")
             print(f"  - Tried direct path: {os.path.join(source_dir, image_path)}")
             # Keep the original link but mark it as not found
-            return f"![{alt_text}](image-not-found-{os.path.basename(image_path)})"
+            return f'<img src="image-not-found-{os.path.basename(image_path)}" alt="image not found">'
     
     # Process markdown image syntax: ![alt text](path/to/image)
     def replace_md_image(match):
@@ -376,8 +376,8 @@ def fix_markdown_issues(content):
     # Fix lists that don't have proper spacing
     content = re.sub(r'([^\n])\n(- |\* |[0-9]+\. )', r'\1\n\n\2', content)
     
-    # Fix HTML tags that might confuse the parser
-    content = re.sub(r'<([a-zA-Z]+)[^>]*>(?!</\1>)', lambda m: f'&lt;{m.group(1)}&gt;', content)
+    # Fix HTML tags that might confuse the parser, but preserve img tags
+    content = re.sub(r'<([a-zA-Z]+)(?!img)[^>]*>(?!</\1>)', lambda m: f'&lt;{m.group(1)}&gt;', content)
     
     return content
 
@@ -428,6 +428,9 @@ def import_obsidian_file(source_path, target_base_dir, vault_path=None, addition
     # Clean the frontmatter
     clean_fm = clean_metadata(frontmatter, filename)
     
+    # Fix any markdown issues that might cause 11ty problems
+    content_without_fm = fix_markdown_issues(content_without_fm)
+    
     # Process and copy images - do this first to find all images
     content_without_fm = process_images(content_without_fm, source_path, target_dir, vault_path, additional_image_paths)
     
@@ -436,9 +439,6 @@ def import_obsidian_file(source_path, target_base_dir, vault_path=None, addition
     
     # Process Obsidian links
     content_without_fm = fix_obsidian_links(content_without_fm, vault_path)
-    
-    # Fix any markdown issues that might cause 11ty problems
-    content_without_fm = fix_markdown_issues(content_without_fm)
     
     # Create the new content with clean frontmatter
     new_content = "---\n"

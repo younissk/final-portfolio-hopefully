@@ -54,59 +54,54 @@ The reason why they are so crucial in Machine learning is due to Systems of line
 
 As you may remember, Images are made up of many pixels, which all have a value for the color. In a grayscale image, this might look like this:
 $$
-\text{Image}  =
+\text{Image} =
+
 \begin{bmatrix}
-\begin{bmatrix}
-255 & 128 \\
-64 & 0
-\end{bmatrix}, \begin{bmatrix}
-0 & 64 \\
-128 & 255
-\end{bmatrix}, \begin{bmatrix}
-128 & 255 \\
-64 & 0
-\end{bmatrix}
+120 & 130 & 140 \\
+200 & 210 & 220 \\
+255 & 245 & 235
 \end{bmatrix}
 $$
 Grayscale image values go from 0 to 255, where 0 is black and 255 is white. Basically saying how black and white this is.
 
 In contrast, RGB Images have 3 channels, which we can think of as 3 distinct matrices per image, meaning they have 3 times more data in them too. 
 
-For a small $2 \times 2$ RGB image, we would have:
-
+For a small  $2 \times 2$ RGB image:
 $$
-\text{R} = 
+\text{R} =
+
 \begin{bmatrix}
 255 & 128 \\
 64 & 0
-\end{bmatrix}, \quad \text{G} = 
+\end{bmatrix}, \quad \text{G} =
+
 \begin{bmatrix}
 0 & 64 \\
 128 & 255
-\end{bmatrix}, \quad \text{B} = 
+\end{bmatrix}, \quad \text{B} =
+
 \begin{bmatrix}
 128 & 255 \\
 64 & 0
 \end{bmatrix}
 $$
-
-The combined RGB image would be represented by combining these matrices:
-
+The combined RGB image is:
 $$
-\text{Image}  =
+\text{Image} =
+
 \begin{bmatrix}
 \begin{bmatrix}
+
 255 & 128 \\
 64 & 0
-\end{bmatrix},
-\begin{bmatrix}
+\end{bmatrix}, \begin{bmatrix}
 0 & 64 \\
 128 & 255
-\end{bmatrix},
-\begin{bmatrix}
+\end{bmatrix}, \begin{bmatrix}
 128 & 255 \\
 64 & 0
 \end{bmatrix}
+
 \end{bmatrix}
 $$
 ## Datasets as Matrices
@@ -145,9 +140,7 @@ $$
 \end{bmatrix}
 $$
 A linear regression model might predict the exam score using the relationship:
-$$
-\mathbf{y} = \mathbf{X} \cdot \mathbf{w} + \mathbf{b}
-$$
+$$\mathbf{y} = \mathbf{X} \cdot \mathbf{w} + \mathbf{b}$$
 Where  $\mathbf{w}$  (weights) and  $\mathbf{b}$  (bias) are learned from the data.
 
 However before we go into how we could solve this example, let us first learn more about Matrices.
@@ -170,8 +163,7 @@ However before we go into how we could solve this example, let us first learn mo
 
 **Square Matrix**: A matrix with the same number of rows and columns ( $n \times n$ ).
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
@@ -179,15 +171,13 @@ A =
 $$
 **Row Matrix**: A matrix with a single row ( 1 \times n ).
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 & 3
 \end{bmatrix}
 $$
 **Column Matrix**: A matrix with a single column ( m \times 1 ).
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 \\
 2 \\
 3
@@ -197,8 +187,7 @@ $$
 
 **Identity Matrix**: A diagonal matrix with all diagonal elements equal to 1.
 $$
-I = 
-\begin{bmatrix}
+I = \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
@@ -206,16 +195,14 @@ I =
 $$
 **Zero Matrix (Null Matrix)**: A matrix where all elements are 0.
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{bmatrix}
 $$
 **Upper Triangular Matrix**: A square matrix where all elements below the diagonal are 0.
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 & 3 \\
 0 & 4 & 5 \\
 0 & 0 & 6
@@ -223,8 +210,7 @@ A =
 $$
 **Lower Triangular Matrix**: A square matrix where all elements above the diagonal are 0.
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 0 & 0 \\
 2 & 3 & 0 \\
 4 & 5 & 6
@@ -265,7 +251,7 @@ show_matrix(image)
 
 We get the following Matrix with it:
 
-![](/articles/matrix/images/Pasted image 20250110173540.png)
+<img src="./images/Pasted image 20250110173540.png" alt="image">
 
 Now that this is clear, let's start with the operations
 
@@ -273,12 +259,10 @@ Now that this is clear, let's start with the operations
 
 This is by far the simplest of the Operations. Scalar multiplication involves multiplying each element of a matrix by a scalar (a single number).
 $$
-\text{If }  A = 
-\begin{bmatrix}
+\text{If } A = \begin{bmatrix}
 1 & 2 \\
 3 & 4
-\end{bmatrix} \text{ and scalar }  c = 3, \text{ then }  cA = 
-\begin{bmatrix}
+\end{bmatrix} \text{ and scalar } c = 3, \text{ then } cA = \begin{bmatrix}
 3 & 6 \\
 9 & 12
 \end{bmatrix}.
@@ -291,24 +275,20 @@ Matrix addition involves adding the corresponding elements of two matrices. To a
 
 For:
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 \\
 3 & 4
-\end{bmatrix}, \quad B = 
-\begin{bmatrix}
+\end{bmatrix}, \quad B = \begin{bmatrix}
 5 & 6 \\
 7 & 8
 \end{bmatrix}
 $$
 The addition would be as such:
 $$
-A + B = 
-\begin{bmatrix}
+A + B = \begin{bmatrix}
 1+5 & 2+6 \\
 3+7 & 4+8
-\end{bmatrix} = 
-\begin{bmatrix}
+\end{bmatrix} = \begin{bmatrix}
 6 & 8 \\
 10 & 12
 \end{bmatrix}
@@ -327,45 +307,38 @@ This is a bit tricky and not that intuitive. The video from 3b1b really helped i
 
 Let  A  be a  $2 \times 3  matrix, and  B$  be a  $3 \times 2$  matrix:
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6
-\end{bmatrix}, \quad B = 
-\begin{bmatrix}
+\end{bmatrix}, \quad B = \begin{bmatrix}
 7 & 8 \\
 9 & 10 \\
 11 & 12
 \end{bmatrix}
 $$
 The resulting matrix  $C$  will have dimensions  $2 \times 2$  because:
-$$
-\text{Number of rows in }  A = 2, \quad \text{Number of columns in }  B = 2
-$$
+$$\text{Number of rows in } A = 2, \quad \text{Number of columns in } B = 2$$
 **Calculation of**  $C = A \cdot B$
 
 Each element  $C[i,j]$  is computed as:
+$$C[i,j] = \sum_k A[i,k] \cdot B[k,j]$$
 $$
-C[i,j] = \sum_k A[i,k] \cdot B[k,j]
-$$
-$$
-C = 
-\begin{bmatrix}
+C = \begin{bmatrix}
 58 & 64 \\
 139 & 154
 \end{bmatrix}
 $$
 What's important here, is that the number of columns of the first Matrix must equal the rows of the second matrix.
 
-![](/articles/matrix/images/Pasted image 20250111061959.png)
+<img src="./images/Pasted image 20250111061959.png" alt="image">
 
 The Dimensions of the Resulting Matrix is made up of the rows of the first and the columns of the second:
 
-![](/articles/matrix/images/Pasted image 20250111062210.png)
+<img src="./images/Pasted image 20250111062210.png" alt="image">
 
 The operation itself would look like this:
 
-![](/articles/matrix/images/Pasted image 20250111062230.png)
+<img src="./images/Pasted image 20250111062230.png" alt="image">
 
 We will be going over a concrete example of this very soon.
 
@@ -424,7 +397,7 @@ show_matrix(image)
 
 We get the following:
 
-![](/articles/matrix/images/Pasted image 20250111071155.png)
+<img src="./images/Pasted image 20250111071155.png" alt="image">
 
 if we were to instead show the transpose:
 
@@ -435,16 +408,14 @@ show_matrix(image.T)
 
 We see the image flipped.
 
-![](/articles/matrix/images/Pasted image 20250111071228.png)
+<img src="./images/Pasted image 20250111071228.png" alt="image">
 
 ### Symmetric images
 
 Matrices that don't change after transposition are called symmetric matrices. 
 
 To make a matrix symmetric, we average the Matrix and its transpose:
-$$
-A_{\text{symmetric} } = \frac{A + A^T}{2}
-$$
+$$A_{\text{symmetric}} = \frac{A + A^T}{2}$$
 Let's try to make our image symmetric. Since it's not square yet, we need to first crop it a bit:
 
 ```python
@@ -453,7 +424,7 @@ show_matrix(square_image)
 
 ```
 
-![](/articles/matrix/images/Pasted image 20250111072707.png)
+<img src="./images/Pasted image 20250111072707.png" alt="image">
 
 
 This is because we can't add 2 matrices with different dimensions.
@@ -466,7 +437,7 @@ show_matrix(symmetric_image)
 
 ```
 
-![](/articles/matrix/images/Pasted image 20250111072833.png)
+<img src="./images/Pasted image 20250111072833.png" alt="image">
 
 It looks weird, but it's correct. Id we were to show it's transpose, it's the same:
 
@@ -475,7 +446,7 @@ show_matrix(symmetric_image.T)
 
 ```
 
-![](/articles/matrix/images/Pasted image 20250111072945.png)
+<img src="./images/Pasted image 20250111072945.png" alt="image">
 
 
 ## Perceptron (Neural Network) example
@@ -484,7 +455,7 @@ Before we continue, we actually have enough information already to calculate our
 
 A perceptron is the simplest type of neural network. It is a **binary classifier** that determines whether an input belongs to one class or another. 
 
-![](/articles/matrix/images/Pasted image 20250111074439.png)
+<img src="./images/Pasted image 20250111074439.png" alt="image">
 
 The perceptron works by calculating a **weighted sum** of the inputs, adding a **bias**, and passing the result through an **activation function** (like a step function).
 
@@ -514,16 +485,14 @@ The perceptron calculates a value  z  as:
 $z = w_1 x_1 + w_2 x_2 + b$
 
 Then applies an activation function to decide the output:
-$$
-y = \begin{cases}
+$$y = \begin{cases}
 
-1 & \text{if }  z \geq 0 \\
+1 & \text{if } z \geq 0 \\
 
-0 & \text{if }  z < 0
+0 & \text{if } z < 0
 
-\end{cases}
-$$
-![](/articles/matrix/images/Pasted image 20250111083630.png)
+\end{cases}$$
+<img src="./images/Pasted image 20250111083630.png" alt="image">
 
 ### Example
 
@@ -531,49 +500,31 @@ Input features:
 Weight of the fruit = 150 grams.
 Redness of the fruit = 8.
 
-Input vector:  $\mathbf{x} = \begin{bmatrix}
-150 \\
-8
-\end{bmatrix}$
+Input vector:  $\mathbf{x} = \begin{bmatrix} 150 \\ 8 \end{bmatrix}$
 
-Now let us define some initial Weights. These basically show the algorithm how important each variable is for guessing the fruit. Weights are one thing that the training algorithm tries to find out by itself. For now let's define them freely as such:  $\mathbf{w} = \begin{bmatrix}
-0.02 \\
-0.5
-\end{bmatrix}$
+Now let us define some initial Weights. These basically show the algorithm how important each variable is for guessing the fruit. Weights are one thing that the training algorithm tries to find out by itself. For now let's define them freely as such:  $\mathbf{w} = \begin{bmatrix} 0.02 \\ 0.5 \end{bmatrix}$
 
 Similarly, biases are also calculated by the training algorithm. Again, we'll define them freely as such: $b = -5$
 
 So to calculate whether the fruit with 150g and 8 redness is a apple, we do the following:
+$$z = \mathbf{w}^T \cdot \mathbf{x} + b$$
 $$
-z = \mathbf{w}^T \cdot \mathbf{x} + b
-$$
-$$
-z = 
-\begin{bmatrix}
+z = \begin{bmatrix}
 0.02 & 0.5
-\end{bmatrix} \cdot 
-\begin{bmatrix}
+\end{bmatrix} \cdot \begin{bmatrix}
 150 \\
 8
 \end{bmatrix} + (-5)
 $$
-$$
-z = (0.02 \cdot 150) + (0.5 \cdot 8) + (-5)
-$$$$
-z = 3 + 4 - 5
-$$$$
-z = 2
-$$
-Apply the step function:
-$$
-y = \sigma(z) = \begin{cases}
+$$z = (0.02 \cdot 150) + (0.5 \cdot 8) + (-5)$$$$z = 3 + 4 - 5$$$$z = 2$$
+Apply the step function:  
+$$y = \sigma(z) = \begin{cases}
 
-1 & \text{if }  z \geq 0 \\
+1 & \text{if } z \geq 0 \\
 
-0 & \text{if }  z < 0
+0 & \text{if } z < 0
 
-\end{cases}
-$$
+\end{cases}$$
 Since  $z = 2 \geq 0 ,  y = 1$
 
 Meaning, it's probably an apple!
@@ -616,7 +567,7 @@ For  y = 0 , we want: $z_i < 0$
 
 It looks like this:
 
-![](/articles/matrix/images/Pasted image 20250111084911.png)
+<img src="./images/Pasted image 20250111084911.png" alt="image">
 
 Now we want to find our weights and biases to finalize our Algorithm of classifying Apples in fruits.
 
@@ -650,8 +601,7 @@ We call $w_1$, $w_2$, and $b$ variables and the data (e..g. 150, 8, 0) coefficie
 
 Out of this, we can actually create a Coefficient and a variable matrix as such:
 $$
-A =
-\begin{bmatrix}
+A =\begin{bmatrix}
 150 & 8 & 1 \\
 120 & 6 & 1 \\
 200 & 3 & 1 \\
@@ -662,8 +612,7 @@ A =
 w_1 \\
 w_2 \\
 b
-\end{bmatrix}, y = 
-\begin{bmatrix}
+\end{bmatrix}, y = \begin{bmatrix}
 1 \\
 1 \\
 0 \\
@@ -671,9 +620,7 @@ b
 \end{bmatrix}
 $$
 To get the weights and biases, we aim to solve: 
-$$
-A \cdot \mathbf{w} = \mathbf{y}
-$$
+$$A \cdot \mathbf{w} = \mathbf{y}$$
 Meaning:
 $$
 \begin{bmatrix}
@@ -687,8 +634,7 @@ $$
 w_1 \\
 w_2 \\
 b
-\end{bmatrix} = 
-\begin{bmatrix}
+\end{bmatrix} = \begin{bmatrix}
 1 \\
 1 \\
 0 \\
@@ -755,11 +701,11 @@ $$
 $$
 9x - 5y + 5z = -2
 $$
-![](/articles/matrix/images/Screenshot 2025-01-11 at 13.28.25.png)
+<img src="./images/Screenshot 2025-01-11 at 13.28.25.png" alt="image">
 
 Transforming it using the 3 rules as mentioned before into Reduced Row Echelon Form gives you:
 
-![](/articles/matrix/images/Screenshot 2025-01-11 at 13.31.38.png)
+<img src="./images/Screenshot 2025-01-11 at 13.31.38.png" alt="image">
 
 This is the same as saying:
 $$
@@ -786,15 +732,11 @@ $$
 w_1 = -0.01, w_2 =0.12, b =1.24
 $$
 Putting this back into our Perceptron neural network, we get:
-$$
-z = (-0.01 \cdot x_1) + (0.12 \cdot x_2) + 1.24
-$$
+$$z = (-0.01 \cdot x_1) + (0.12 \cdot x_2) + 1.24$$
 As our Classifier. With the data given. 
 
 Let's try this out with test sample. A strawberry has about 13.6g and a "redness" value of 10. 
-$$
-z = (-0.01 \cdot 13.6) + (0.12 \cdot 10) + 1.24  = 2.304
-$$
+$$z = (-0.01 \cdot 13.6) + (0.12 \cdot 10) + 1.24  = 2.304$$
 Ok not the best... It seems like it thinks that a strawberry is an apple. 
 
 This is because we only used 3 samples. **The partial system we solved told the perceptron** that redness is extremely important. This is when we would need to add more data to get better weights and biases. However this wouldn't be possible with Gaussian elimination.
@@ -817,17 +759,16 @@ The rank of  determines:
 
 2. Whether all the rows (or equations) are useful for solving, or if some rows are redundant (dependent).
 
-- **Full Rank**: If the matrix  A  has full rank ( $\text{rank} (A) = n$ ), it spans the entire space. This means we can solve  $Ax = b$  uniquely for any  b .
+- **Full Rank**: If the matrix  A  has full rank ( $\text{rank}(A) = n$ ), it spans the entire space. This means we can solve  $Ax = b$  uniquely for any  b .
 
-- **Not Full Rank**: If  $\text{rank} (A) < n$ , it doesn’t span the full space. Some equations are redundant, leading to no solutions or infinitely many solutions.
+- **Not Full Rank**: If  $\text{rank}(A) < n$ , it doesn’t span the full space. Some equations are redundant, leading to no solutions or infinitely many solutions.
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 \\
 2 & 4
-\end{bmatrix}, \quad \text{rank} (A) = 1
+\end{bmatrix}, \quad \text{rank}(A) = 1
 $$
-The second row is a multiple of the first ( $2 \times \text{row} _1 = \text{row} _2$ ).
+The second row is a multiple of the first ( $2 \times \text{row}_1 = \text{row}_2$ ).
 
 The system  Ax = b might have no solution (if  b  is inconsistent with the equations) and it might have infinitely many solutions (if  b  lies on the span of the rows).
 
@@ -838,8 +779,7 @@ An **elementary matrix** is just the **Identity Matrix** ($I_n$) with one row op
 **a) Row Interchange**
 Suppose we swap $R_1$ and $R_2$. The corresponding **elementary matrix** is:
 $$
-E = 
-\begin{bmatrix}
+E = \begin{bmatrix}
 0 & 1 & 0 \\
 1 & 0 & 0 \\
 0 & 0 & 1
@@ -848,8 +788,7 @@ $$
 **b) Row Scaling**
 Suppose we scale $R_2$ by multiplying it by 3. The elementary matrix is:
 $$
-E = 
-\begin{bmatrix}
+E = \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 3 & 0 \\
 0 & 0 & 1
@@ -858,8 +797,7 @@ $$
 **c) Row Replacement**
 Suppose we replace $R_3$ with $R_3 + 4R_1$. The elementary matrix is:
 $$
-E = 
-\begin{bmatrix}
+E = \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 4 & 0 & 1
@@ -897,15 +835,13 @@ This method builds the inverse step by step by transforming  A  into the ident
 
 **Example:**
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 2 \\
 3 & 4
 \end{bmatrix}
 $$
 **Step 1: Augment with**  I **:**
-$$
-\left[ \begin{array}{cc|cc}
+$$\left[ \begin{array}{cc|cc}
 
 1 & 2 & 1 & 0 \\
 
@@ -914,8 +850,7 @@ $$
 \end{array} \right]
 $$
 **Step 2: Row reduce**  A  **to**  I **:**
-$$
-R_2 = R_2 - 3R_1 \quad \Rightarrow \quad
+$$R_2 = R_2 - 3R_1 \quad \Rightarrow \quad
 
 \left[ \begin{array}{cc|cc}
 
@@ -923,10 +858,8 @@ R_2 = R_2 - 3R_1 \quad \Rightarrow \quad
 
 0 & -2 & -3 & 1
 
-\end{array} \right]
-$$
-$$
-R_2 = -\frac{1}{2}R_2 \quad \Rightarrow \quad
+\end{array} \right]$$
+$$R_2 = -\frac{1}{2}R_2 \quad \Rightarrow \quad
 
 \left[ \begin{array}{cc|cc}
 
@@ -934,10 +867,8 @@ R_2 = -\frac{1}{2}R_2 \quad \Rightarrow \quad
 
 0 & 1 & \frac{3}{2} & -\frac{1}{2}
 
-\end{array} \right].
-$$
-$$
-R_1 = R_1 - 2R_2 \quad \Rightarrow \quad
+\end{array} \right].$$
+$$R_1 = R_1 - 2R_2 \quad \Rightarrow \quad
 
 \left[ \begin{array}{cc|cc}
 
@@ -949,8 +880,7 @@ R_1 = R_1 - 2R_2 \quad \Rightarrow \quad
 $$
 **Step 3: Result:**
 $$
-A^{-1} = 
-\begin{bmatrix}
+A^{-1} = \begin{bmatrix}
 -2 & 1 \\
 \frac{3}{2} & -\frac{1}{2}
 \end{bmatrix}
@@ -958,9 +888,7 @@ $$
 ### Cofactor Expansion for finding inverses
 
 The general formula for this is the following:
-$$
-A^{-1} = \frac{1}{\text{det} (A)} \cdot C^T
-$$
+$$  A^{-1} = \frac{1}{\text{det}(A)} \cdot C^T$$
 Now there is a lot to unpack here since there are a lot of new things. What is det(A) supposed to mean? What is this weird $C^T$? We'll cover all that now. You will get to see however, that this option might be the easier one actually. The reason being is that its actually just a Scalar multiplication in the end.
 
 But let's not get ahead of ourselves. Let's go through each part of this equation to understand what it means.
@@ -977,16 +905,14 @@ For now, just see this as a necessary matrix operation needed for getting the in
 
 Calculating the determinant is a bit tricky and not that intuitive. We begin with 2x2 Matrices as they are the easiest to calculate for the determinant.
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 3 & 2 \\
 1 & 4
-\end{bmatrix}, \text{det} (A) = (3)(4) - (2)(1) = 12 - 2 = 10
+\end{bmatrix}, \text{det}(A) = (3)(4) - (2)(1) = 12 - 2 = 10
 $$
 For larger matrices we have to do something called cofactor expansion. 
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 a_{11} & a_{12} & a_{13} \\
 a_{21} & a_{22} & a_{23} \\
 a_{31} & a_{32} & a_{33}
@@ -994,40 +920,35 @@ a_{31} & a_{32} & a_{33}
 $$
 I personally remember the following process to properly calculate the determinant of larger matrices:
 
-1. Pick a row, preferably with many zeros.![](/articles/matrix/images/Screenshot 2025-01-12 at 07.56.52.png)
+1. Pick a row, preferably with many zeros.<img src="./images/Screenshot 2025-01-12 at 07.56.52.png" alt="image">
 
-2. Go through each element of the row and remove the row and column to it ![](/articles/matrix/images/Screenshot 2025-01-12 at 07.58.22.png)
+2. Go through each element of the row and remove the row and column to it <img src="./images/Screenshot 2025-01-12 at 07.58.22.png" alt="image">
 
 3. Calculate the determinant of the resulting smaller matrix.
-$$
-\text{det} (A) = a_{11} \cdot \text{det} (A_{11}) - a_{12} \cdot \text{det} (A_{12}) + a_{13} \cdot \text{det} (A_{13})
-$$
+$$\text{det}(A) = a_{11} \cdot \text{det}(A_{11}) - a_{12} \cdot \text{det}(A_{12}) + a_{13} \cdot \text{det}(A_{13})$$
 One important thing to note here is the sign. While there is a formula for getting the sign, the intuitive way is to simply remember this: Row number + Column number (e.g. row 1 column 2). If this is odd, then the sign is negative, else it is positive. Or even simpler:
 
-![](/articles/matrix/images/Screenshot 2025-01-12 at 10.25.39.png)
+<img src="./images/Screenshot 2025-01-12 at 10.25.39.png" alt="image">
 This will be also important for getting the Cofactor, the next step of the Matrix inverse equation.
 
 **Example:**
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 0 & 2 \\
 4 & 1 & 8 \\
 0 & 1 & 1
 \end{bmatrix}
 $$
 $$
-\text{det} (A) = 1 \cdot \text{det} \begin{bmatrix}
+\text{det}(A) = 1 \cdot \text{det}\begin{bmatrix}
 1 & 8 \\
 1 & 1
-\end{bmatrix} - 0 \cdot (\dots) + 2 \cdot \text{det} \begin{bmatrix}
+\end{bmatrix} - 0 \cdot (\dots) + 2 \cdot \text{det}\begin{bmatrix}
 4 & 1 \\
 0 & 1
 \end{bmatrix}
 $$
-$$
-\text{det} (A) = 1 \cdot (1 - 8) + 2 \cdot (4 - 0) = -7 + 8 = 1
-$$
+$$\text{det}(A) = 1 \cdot (1 - 8) + 2 \cdot (4 - 0) = -7 + 8 = 1$$
 ### Cofactor of a Matrix
 
 A **cofactor** of an element in a matrix is a value that combines:
@@ -1038,8 +959,7 @@ A **cofactor** of an element in a matrix is a value that combines:
 
 It's kinda easier to show than to explain. Let's take the same matrix from the previous example:
 $$
-A = 
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & 0 & 2 \\
 4 & 1 & 8 \\
 0 & 1 & 1
@@ -1049,36 +969,32 @@ To get the Cofactor matrix, we need to calculate the determinant of every single
 
 This is the general intuitive algorithm:
 
-![](/articles/matrix/images/Pasted image 20250112131734.png)
+<img src="./images/Pasted image 20250112131734.png" alt="image">
 
 After doing so with every element, we get the cofactor matrix as such:
 $$
-C = 
-\begin{bmatrix}
+C = \begin{bmatrix}
 -7 & -4 & 4 \\
 2 & 1 & -1 \\
 -2 & 0 & 1
 \end{bmatrix}
 $$
-To now finally get the inverse of a matrix, we multiply the transpose of this matrix by the scalar of $\frac{1}{\text{det} (A)}$
+To now finally get the inverse of a matrix, we multiply the transpose of this matrix by the scalar of $\frac{1}{\text{det}(A)}$
 
 So the Transpose $C^T$  (flipped matrix) is:
 $$
-C^T = 
-\begin{bmatrix}
+C^T = \begin{bmatrix}
 -7 & 2 & -2 \\
 -4 & 1 & 0 \\
 4 & -1 & 1
 \end{bmatrix}
 $$
 $$
-A^{-1} = \frac{1}{\text{det} (A)} \cdot C^T = C^T = \frac{1}{1} 
-\begin{bmatrix}
+A^{-1} = \frac{1}{\text{det}(A)} \cdot C^T = C^T = \frac{1}{1} \begin{bmatrix}
 -7 & 2 & -2 \\
 -4 & 1 & 0 \\
 4 & -1 & 1
-\end{bmatrix} = 
-\begin{bmatrix}
+\end{bmatrix} = \begin{bmatrix}
 -7 & 2 & -2 \\
 -4 & 1 & 0 \\
 4 & -1 & 1
